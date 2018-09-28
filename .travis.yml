@@ -1,7 +1,7 @@
-language: r
-r:
-  - oldrel
-  - release
-  - devel
+language: none
+install:
+  - curl -fLo /tmp/pandoc-2.2-1-amd64.deb https://github.com/jgm/pandoc/releases/download/2.2/pandoc-2.2-1-amd64.deb
+  - sudo dpkg -i /tmp/pandoc-2.2-1-amd64.deb
+  - rm /tmp/pandoc-2.2-1-amd64.deb
 script:
   - pandoc -o test.pdf test/test.md test/test2.md
