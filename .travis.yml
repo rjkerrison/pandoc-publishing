@@ -9,3 +9,12 @@ install:
   - sudo apt-get install texlive-latex-extra
 script:
   - pandoc -o test.pdf test/test.md test/test2.md
+deploy:
+  provider: gcs
+  access_key_id: GOOGLTDHT6VEYBXV7MJJYJUF
+  secret_access_key:
+    secure: p13KGneY22sosRCCvj6BDFYmXL+YifLgIOy9pwY3t9ej/wsdE1zJQwws8TjM2lShNcMSxsyHyX08rPHnE56ZeQWax3roIfqc8K3Q5WN3uuQcreL2zGAfh6uVbwg2fdu3wsab/XuArCP9xOeVehUpY845x0mFcz9j8xSfoGw8NNgG5MgfoQ157C5oDpqbJEf+5n8LtLC3o9RfkcXFzzZW2Z3LaI3fYhG3NMHf+Zr6znMqZVMFvVNvLgzK87n7Mp8FtET+N06IBlpzDTToW/wJOOBd0n2yijSQreU2MciB43c9sc7Y3kBChqOhfjsj0TCO0BA60TQHxgqsTaCsEfo5yfZdo1YNzuRRYtexsOt7Uw/yQ5qICV/lSwZ8HcdHr8atLcPIzH/iMqxGRWUMrznMpP/RwCjbqqsG0DfSmWZhWvQS8h9HmcaGOxifygCv+49XvO/H1XIqy3TPbA2aoHQFEj0gkd55I67aIiwc/mq+OVkH5xyLBHqXd+Zz4sXKjm9YsghzVz/NW5wEcPAdTEu4keKdoaR2vtMvn43vin1adAMC+EjeehtfXm/QoQeK87Mp8KNrDAPOMg69LTTLw0CsdzcRmMwlj7gNaWRDKnLS36Smpxqs3gy43O14UgLzLBFm5gXdTs4AHVHfmTBD+w9jrI5FZHKlMzL9oBSFErxdsO0=
+  bucket: pandoc-publishing
+  local-dir: "."
+  on:
+    repo: rjkerrison/pandoc-publishing
