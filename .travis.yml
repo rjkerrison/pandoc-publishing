@@ -1,0 +1,7 @@
+language: r
+r:
+  - oldrel
+  - release
+  - devel
+script:
+  - pandoc -o test.pdf test/test.md test/test2.md
