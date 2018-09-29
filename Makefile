@@ -7,7 +7,7 @@
 # - DejaVu Sans fonts
 
 # Directory containing source (Markdown) files
-source := .
+source := test
 
 # Directory containing pdf files
 output := output
@@ -22,7 +22,7 @@ objects := $(patsubst %.md,%.pdf,$(subst $(source),$(output),$(sources)))
 all: $(objects)
 
 # Recipe for converting a Markdown file into PDF using Pandoc
-$(output)/%.html: $(source)/%.md
+$(output)/%.pdf: $(source)/%.md
 	pandoc \
 		--variable mainfont="DejaVu Sans" \
 		--variable monofont="DejaVu Sans Mono" \
