@@ -7,10 +7,10 @@
 # - DejaVu Sans fonts
 
 # Directory containing source (Markdown) files
-source := test
+source := ./test
 
 # Directory containing pdf files
-output := output
+output := ./output
 
 # All markdown files in src/ are considered sources
 sources := $(wildcard $(source)/*.md)
