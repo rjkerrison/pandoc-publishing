@@ -32,7 +32,6 @@ $(output)/%.pdf: $(source)/%.md
 		--table-of-contents \
 		--number-sections \
 		-f markdown  $< \
-		--pdf-engine=lualatex \
 		-o $@
 
 .PHONY : clean
