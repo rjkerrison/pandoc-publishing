@@ -13,16 +13,12 @@ source := ./test
 output := ./output
 
 # All markdown files in src/ are considered sources
-sources := $(wildcard $(source)/*.md)
+sources := $(sort $(wildcard $(source)/*.md))
 
-# Convert the list of source files (Markdown files in source directory)
-# into a list of output files (HTML in output directory).
-objects := $(patsubst %.md,%.pdf,$(subst $(source),$(output),$(sources)))
-
-all: $(objects)
+all: $(output)/output.pdf
 
 # Recipe for converting a Markdown file into PDF using Pandoc
-$(output)/%.pdf: $(source)/%.md
+$(output)/%.pdf:
 	pandoc \
 		--variable mainfont="DejaVu Sans" \
 		--variable monofont="DejaVu Sans Mono" \
@@ -31,7 +27,7 @@ $(output)/%.pdf: $(source)/%.md
 		--variable geometry:a4paper \
 		--table-of-contents \
 		--number-sections \
-		-f markdown  $< \
+		-f markdown  $(sources) \
 		-o $@
 
 .PHONY : clean
