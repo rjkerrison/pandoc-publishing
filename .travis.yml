@@ -9,7 +9,7 @@ install:
   - sudo apt-get install texlive-latex-extra
 script:
   - mkdir output
-  - pandoc -o output/test.pdf test/test.md test/test2.md
+  - make
 deploy:
   provider: gcs
   access_key_id: GOOGLTDHT6VEYBXV7MJJYJUF
