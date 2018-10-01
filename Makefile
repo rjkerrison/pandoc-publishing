@@ -27,6 +27,7 @@ $(output)/%.pdf:
 		--variable geometry:a4paper \
 		--table-of-contents \
 		--number-sections \
+		--pdf-engine=xelatex \
 		-f markdown  $(sources) \
 		-o $@
 
