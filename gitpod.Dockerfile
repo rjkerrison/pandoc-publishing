@@ -10,7 +10,7 @@ RUN curl -fLo /tmp/pandoc-2.2-1-amd64.deb https://github.com/jgm/pandoc/releases
 RUN apt-get update \
 # Install tex packages, non-interactive and quiet
     && apt-get -qq -y install texlive-xetex \
-    && apt-get -qq -y install texlive-math-extra \
+    && apt-get -qq -y install texlive-collection-mathextra \
     && apt-get -qq -y install texlive-fonts-recommended \
     && apt-get -qq -y install texlive-fonts-extra \
     && apt-get -qq -y install texlive-latex-extra
