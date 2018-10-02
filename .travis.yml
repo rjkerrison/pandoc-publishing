@@ -1,8 +1,8 @@
 language: none
 install:
-  - curl -fLo /tmp/pandoc-2.2-1-amd64.deb https://github.com/jgm/pandoc/releases/download/2.2/pandoc-2.2-1-amd64.deb
-  - sudo dpkg -i /tmp/pandoc-2.2-1-amd64.deb
-  - rm /tmp/pandoc-2.2-1-amd64.deb
+  - curl -fLo /tmp/pandoc-2.2-1-amd64.deb https://github.com/jgm/pandoc/releases/download/2.2/pandoc-2.2-1-amd64.deb \
+    && sudo dpkg -i /tmp/pandoc-2.2-1-amd64.deb \
+    && rm /tmp/pandoc-2.2-1-amd64.deb
   - sudo apt-get install texlive-xetex
   - sudo apt-get install texlive-math-extra
   - sudo apt-get install texlive-fonts-recommended
