@@ -14,9 +14,6 @@ RUN apt-get -qq -y install texlive-fonts-recommended
 RUN apt-get -qq -y install texlive-fonts-extra
 RUN apt-get -qq -y install texlive-latex-extra
 
-# Need to see available packages
-RUN apt-cache search texlive 
-
 USER gitpod
 # Apply user-specific settings
 # ENV ...
