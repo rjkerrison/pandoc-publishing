@@ -15,7 +15,7 @@ output := ./output
 # All markdown files in src/ are considered sources
 sources := $(sort $(wildcard $(source)/*.md))
 
-all: $(output)/output.pdf
+all: $(output)/output.pdf, $(output)/output.epub
 
 # Recipe for converting a Markdown file into PDF using Pandoc
 $(output)/%.pdf:
@@ -27,6 +27,12 @@ $(output)/%.pdf:
 		--variable geometry:a4paper \
 		--table-of-contents \
 		--number-sections \
+		-f markdown  $(sources) \
+		-o $@
+
+$(output)/%.epub:
+	pandoc \
+		--table-of-contents \
 		-f markdown  $(sources) \
 		-o $@
 
