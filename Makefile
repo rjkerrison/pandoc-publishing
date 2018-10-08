@@ -20,13 +20,11 @@ all: $(output)/output.pdf $(output)/output.epub
 # Recipe for converting a Markdown file into PDF using Pandoc
 $(output)/%.pdf:
 	pandoc \
-		--variable mainfont="DejaVu Sans" \
-		--variable monofont="DejaVu Sans Mono" \
 		--variable fontsize=11pt \
 		--variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" \
 		--variable geometry:a4paper \
 		--table-of-contents \
-		--number-sections \
+		--pdf-engine=xelatex \
 		-f markdown  $(sources) \
 		-o $@
 
