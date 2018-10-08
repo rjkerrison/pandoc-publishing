@@ -1,3 +1,11 @@
+---
+title: Markdown export test
+author: "Robin James Kerrison"
+header-includes:
+   - \setlength\parindent{24pt}
+mainfont: "Lato"
+---
+
 # Markdown export test
 
 This is a markdown export test file.
