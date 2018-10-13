@@ -3,38 +3,43 @@
 # In order to use this makefile, you need some tools:
 # - GNU make
 # - Pandoc
-# - LuaLaTeX
-# - DejaVu Sans fonts
+# - Xelatex
 
-# Directory containing source (Markdown) files
-source := ./test
+# Directory containing source files
+source := ./src
 
 # Directory containing pdf files
 output := ./output
 
-# All markdown files in src/ are considered sources
-sources := $(sort $(wildcard $(source)/*.md))
+# Source subdirectories are inputs
+inputs := $(wildcard $(source)/*/)
 
-all: $(output)/output.pdf $(output)/output.epub
+all: directories $(pdf_outputs) $(epub_outputs)
 
-# Recipe for converting a Markdown file into PDF using Pandoc
-$(output)/%.pdf:
+directories : $(output)
+pdf_outputs : $(patsubst $(source)/%/,$(output)/%.pdf,$(inputs))
+epub_outputs : $(patsubst $(source)/%/,$(output)/%.epub,$(inputs))
+
+$(output)/%.pdf : $(source)/%
 	pandoc \
 		--variable fontsize=11pt \
 		--variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" \
 		--variable geometry:a4paper \
 		--table-of-contents \
 		--pdf-engine=xelatex \
-		-f markdown  $(sources) \
+		-f markdown $(sort $(wildcard $</*.md)) \
 		-o $@
 
-$(output)/%.epub:
+$(output)/%.epub : $(source)/%
 	pandoc \
 		--table-of-contents \
-		-f markdown  $(sources) \
+		-f markdown $(sort $(wildcard $</*.md)) \
 		-o $@
+
+$(output)/ : .
+	mkdir $@
 
 .PHONY : clean
 
 clean:
-	rm -f $(output)/*.pdf
+	rm -f $(output)/*
