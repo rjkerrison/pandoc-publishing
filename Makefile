@@ -14,11 +14,8 @@ output := ./output
 # Source subdirectories are inputs
 inputs := $(wildcard $(source)/*/)
 
-all: directories $(pdf_outputs) $(epub_outputs)
-
-directories : $(output)
-pdf_outputs : $(patsubst $(source)/%/,$(output)/%.pdf,$(inputs))
-epub_outputs : $(patsubst $(source)/%/,$(output)/%.epub,$(inputs))
+pdf_outputs := $(patsubst $(source)/%/,$(output)/%.pdf,$(inputs))
+epub_outputs := $(patsubst $(source)/%/,$(output)/%.epub,$(inputs))
 
 $(output)/%.pdf : $(source)/%
 	pandoc \
@@ -36,10 +33,9 @@ $(output)/%.epub : $(source)/%
 		-f markdown $(sort $(wildcard $</*.md)) \
 		-o $@
 
-$(output)/ : .
-	mkdir $@
-
 .PHONY : clean
+
+all: $(pdf_outputs) $(epub_outputs)
 
 clean:
 	rm -f $(output)/*
