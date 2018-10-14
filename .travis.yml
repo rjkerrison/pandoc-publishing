@@ -8,6 +8,7 @@ install:
   - sudo apt-get install texlive-fonts-recommended
   - sudo apt-get install texlive-fonts-extra
   - sudo apt-get install texlive-latex-extra
+  - ls /usr/share/texlive/texmf-dist/tex/latex/montserrat
 script:
   - mkdir output
   - make
