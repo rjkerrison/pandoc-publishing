@@ -19,6 +19,7 @@ all: $(output)/output.pdf $(output)/output.epub
 
 # Recipe for converting a Markdown file into PDF using Pandoc
 $(output)/%.pdf:
+	mkdir -p $(@D)
 	pandoc \
 		--variable fontsize=11pt \
 		--variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" \
@@ -29,6 +30,7 @@ $(output)/%.pdf:
 		-o $@
 
 $(output)/%.epub:
+	mkdir -p $(@D)
 	pandoc \
 		--table-of-contents \
 		-f markdown  $(sources) \
