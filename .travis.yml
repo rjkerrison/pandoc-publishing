@@ -12,7 +12,6 @@ install:
   - test /usr/share/texlive/texmf-dist/tex/latex && ls /usr/share/texlive/texmf-dist/tex/latex
   - find /usr/share/texlive -name montserrat
 script:
-  - mkdir output
   - make
 deploy:
   provider: gcs
