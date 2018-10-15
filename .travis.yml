@@ -9,7 +9,6 @@ install:
   - sudo apt-get install texlive-fonts-extra
   - sudo apt-get install texlive-latex-extra
 script:
-  - mkdir output
   - make
 deploy:
   provider: gcs
